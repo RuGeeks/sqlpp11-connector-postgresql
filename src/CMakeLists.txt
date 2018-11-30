@@ -54,11 +54,11 @@ if (WIN32)
 elseif(APPLE)
 	set(POSTGRESQL_LIB_FILE "lib${PostgreSQL_LIBRARIES}.dylib")
 else()
-	set(POSTGRESQL_LIB_FILE "lib${PostgreSQL_LIBRARIES}.so")
+	set(POSTGRESQL_LIB_FILE "${PostgreSQL_LIBRARIES}")
 endif()
 
 target_compile_options(sqlpp11-connector-postgresql-dynamic INTERFACE -DSQLPP_DYNAMIC_LOADING)
-target_compile_options(sqlpp11-connector-postgresql-dynamic PRIVATE -DBUILDING_DLL -DSQLPP_DYNAMIC_LOADING -DSQLPP_DYNAMIC_LOADING_FILENAME=${POSTGRESQL_LIB_FILE})
+target_compile_options(sqlpp11-connector-postgresql-dynamic PRIVATE -DBUILDING_DLL -DSQLPP_DYNAMIC_LOADING -DSQLPP_DYNAMIC_LOADING_FILENAME=\"${POSTGRESQL_LIB_FILE}\")
 target_compile_features(sqlpp11-connector-postgresql PRIVATE cxx_auto_type)
 target_compile_features(sqlpp11-connector-postgresql-dynamic PRIVATE cxx_auto_type)
 

@@ -106,7 +106,7 @@ void init_pg(std::string libname)
 
    if (libname.empty())
    {
-       libname = GET_STR(SQLPP_DYNAMIC_LOADING_FILENAME);
+       libname = SQLPP_DYNAMIC_LOADING_FILENAME;
    }
 
 #undef GET_STR
